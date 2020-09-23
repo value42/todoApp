@@ -1,0 +1,29 @@
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+  margin-right: 1rem;
+}
+
+.todo, .inputForm {
+  margin-right: 2rem;
+  font-size: 1.5rem;
+  display: flex;
+  margin: 15px 0px 15px 0rem;
+  justify-content: center;
+}
+
+.loginbtn {
+  margin: 5px 0px 10px 0.2rem;
+}
+
+.inpform {
+  width: 50%
+}
+
+.notcompleted {
+  margin-right: 1rem;
+}
+
+body{
+  background-color: peachpuff;
+}
