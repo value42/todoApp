@@ -23,8 +23,8 @@ export default function Todo({ todo, sendToTodo, editTodo, applyTodo }) {
             {todo.editing ?
                 <>
                     <form>
-                        <input className="inpforma" defaultValue={todo.name} ref={textInput}></input>
-                        <div className="btn-group mr-2" role="group" aria-label="Second group">
+                        <div className="applys">
+                            <input defaultValue={todo.name} ref={textInput}></input>
                             <button type="button" onClick={applyingTodo} className="btn btn-secondary">Apply</button>
                         </div>
                     </form>

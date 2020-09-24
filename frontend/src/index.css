@@ -33,3 +33,13 @@ body{
 form {
   text-align:center;
 }
+
+.applya{
+  margin-bottom: 30px;
+  width: 300px;
+  height: 100px;
+}
+
+.applys{
+  margin-bottom: 20px;
+}
