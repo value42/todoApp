@@ -1,4 +1,3 @@
-from django.urls import path
 from .views import TodoListView, TodoDetailView, UsersListView, TodosListView, TodosEditView
 from django.urls import path, include
 

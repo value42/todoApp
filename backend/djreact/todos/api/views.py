@@ -11,16 +11,16 @@ from rest_framework import permissions
 
 class TodosListView(APIView):
     permission_classes = [permissions.AllowAny]
-    "Вывод списка докторов"
+
     def get(self, request):
-        doctor = Todo.objects.all()
-        serializer = TodoSerializer(doctor, many=True)
+        todo = Todo.objects.all()
+        serializer = TodoSerializer(todo, many=True)
         return Response(serializer.data)
 
     def post(self, request):
-        doctor = TodoSerializer(data=request.data)
-        if doctor.is_valid():
-            doctor.save()
+        todo = TodoSerializer(data=request.data)
+        if todo.is_valid():
+            todo.save()
         return Response(status=201)
 
 
@@ -28,16 +28,16 @@ class TodosEditView(APIView):
     permission_classes = [permissions.AllowAny]
 
     def put(self, request, pk):
-        doctor = Todo.objects.get(pk=pk)
-        serializer = TodoSerializer(doctor, data=request.data)
+        todo = Todo.objects.get(pk=pk)
+        serializer = TodoSerializer(todo, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, request, pk):
-        doctor = Todo.objects.get(pk=pk)
-        doctor.delete()
+        todo = Todo.objects.get(pk=pk)
+        todo.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
