@@ -24,6 +24,7 @@ export default function Form({ todos, setTodos, myAccount }) {
             }
         });
         textInput.current.value = null
+        window.location.reload();
     }
 
     const deleteCompleted = () => {
@@ -33,12 +34,14 @@ export default function Form({ todos, setTodos, myAccount }) {
 
     return (
         <>
-            <div className='input-group'>
-                <input className="form-control inpform" type="text" ref={textInput} placeholder="New TODO" aria-label="New TODO" aria-describedby="button-addon4"></input>
-                <div className="input-group-append" id="button-addon4">
-                    <button className="btn btn-secondary" type="button" onClick={makeNewList}>Add task</button>
-                    <button className="btn btn-danger" type="button" onClick={deleteCompleted}>Delete Completed</button>
-                </div>
+            <div className=''>
+                <form>
+                    <input className="inpform" type="text" ref={textInput} placeholder="New TODO" aria-label="New TODO" aria-describedby="button-addon4"></input>
+                    <div>
+                        <button className="btn btn-secondary loginbtn" type="button" onClick={makeNewList}>Add task</button>
+                        <button className="btn btn-danger loginbtn" type="button" onClick={deleteCompleted}>Delete Completed</button>
+                    </div>
+                </form>
             </div>
         </>
     )

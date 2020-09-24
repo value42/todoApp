@@ -19,23 +19,25 @@ export default function Todo({ todo, sendToTodo, editTodo, applyTodo }) {
     }
 
     return (
-        <div className='todo'>
+        <div>
             {todo.editing ?
                 <>
-                    <input className="form-control inpform" defaultValue={todo.name} ref={textInput}></input>
-                    <div className="btn-group mr-2" role="group" aria-label="Second group">
-                        <button type="button" onClick={applyingTodo} className="btn btn-secondary">Apply</button>
-                    </div>
+                    <form>
+                        <input className="inpforma" defaultValue={todo.name} ref={textInput}></input>
+                        <div className="btn-group mr-2" role="group" aria-label="Second group">
+                            <button type="button" onClick={applyingTodo} className="btn btn-secondary">Apply</button>
+                        </div>
+                    </form>
                 </>
                 :
-                <>
+                <div className='todo'>
                     <span className={todo.complete ? "completed" : "notcompleted"}>{todo.name}</span>
                     <div className="btn-group mr-2" role="group" aria-label="Second group">
                         <button type="button" onClick={editingTodo} className="btn btn-secondary">Edit</button>
                         <button type="button" onClick={handleTodoClick} className="btn btn-secondary">Done</button>
                     </div>
 
-                </>
+                </div>
             }
         </div>
     )

@@ -18,13 +18,10 @@ function App() {
 
   useEffect(() => {
 
-    console.log(myUsername, myUsername)
     const data = {
       "username": myUsername,
       "password": myPassword
     }
-
-    console.log(myAccount, myUsername, myPassword)
 
     axios.post('http://127.0.0.1:8000/api/auth/token/token/login/', data)
       .then((res) => {
@@ -72,8 +69,8 @@ function App() {
     const data = {
       "todo_id": todo.todo_id,
       "name": todo.name,
-      "complete": true,
-      "editing": todo.editing,
+      "complete": todo.complete,
+      "editing": false,
       "author": myAccount
     }
 
@@ -99,6 +96,24 @@ function App() {
     const todo = newTodos.find(todo => todo.todo_id === id)
     todo.name = text
     setTodos(newTodos)
+
+    const data = {
+      "todo_id": todo.todo_id,
+      "name": todo.name,
+      "complete": todo.complete,
+      "editing": false,
+      "author": myAccount
+    }
+
+    axios.put('http://127.0.0.1:8000/api/todos/' + String(todo.id) + '/', data)
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+
+
   }
 
   function logout() {
@@ -120,7 +135,7 @@ function App() {
           <TodoList todos={todos} toggleTodo={toggleTodo} editTodo={editTodo} applyTodo={applyTodo} />
           <Form todos={todos} setTodos={setTodos} myAccount={myAccount} />
           <div className="text-center" >{todos.filter(todo => !todo.complete).length} left to do</div>
-          <button className="btn btn-warning loginbtn" type="button" onClick={logout}>Выйти</button>
+          <button className="btn btn-danger loginbtn" type="button" onClick={logout}>Выйти</button>
         </div>
       ) : (
           <Login setMyUsername={setMyUsername} setMyPassword={setMyPassword} />

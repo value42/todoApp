@@ -5,18 +5,17 @@ import axios from 'axios'
 export default function Login({ setMyUsername, setMyPassword }) {
 
     function getLoginElements() {
-        const singInLogin = document.getElementsByTagName("input")[0].value
-        const singInPassword = document.getElementsByTagName("input")[1].value
+        const singInLogin = document.getElementById("singInLogin").value
+        const singInPassword = document.getElementById("singInPassword").value
         setMyUsername(singInLogin)
         setMyPassword(singInPassword)
     }
 
 
     function getRegisterElements() {
-        const singUpLogin = document.getElementsByTagName("input")[2].value
-        const singUpPassword = document.getElementsByTagName("input")[3].value
-        setMyUsername(singUpLogin)
-        setMyPassword(singUpPassword)
+        const singUpLogin = document.getElementById("singUpLogin").value
+        const singUpPassword = document.getElementById("singUpPassword").value
+
 
         const data = {
             "username": singUpLogin,
@@ -26,39 +25,42 @@ export default function Login({ setMyUsername, setMyPassword }) {
 
         axios.post('http://127.0.0.1:8000/api/auth/users/', data)
             .then((res) => {
-                console.log(res)
+                alert("Вы зарегистировались!")
+                setMyUsername(singUpLogin)
+                setMyPassword(singUpPassword)
             })
             .catch((err) => {
-                console.log(err)
+                alert("Попробуйте еще раз!")
             })
 
     }
 
     return (
-        <div>
-            <h1>Войти в Аккаунт</h1>
+        <form>
+            <div className='centeredobj '>
+                <h1>Войти в Аккаунт</h1>
+                <label >Username:</label>
+                <div>
+                    <input id="singInLogin" className='inpform' type="text" />
+                </div>
+                <label>Password:</label>
+                <div>
+                    <input id="singInPassword" className='inpform' type="password" />
+                </div>
+                <button className="btn btn-secondary loginbtn" onClick={getLoginElements}>Войти</button>
 
-            <label for="usr">Username:</label>
-            <div>
-                <input className='inpform' type="text" id="usr" />
-            </div>
-            <label for="pwd">Password:</label>
-            <div>
-                <input className='inpform' type="text" id="pwd" />
-            </div>
-            <button className="btn btn-warning loginbtn" onClick={getLoginElements}>Войти</button>
+                <h1>Создать Аккаунт</h1>
+                <label>Username:</label>
+                <div>
+                    <input id="singUpLogin" className='inpform' type="text" />
+                </div>
+                <label>Password:</label>
+                <div>
+                    <input id="singUpPassword" type="password" className='inpform' />
+                </div>
+                <button className="btn btn-secondary loginbtn" type="button" onClick={getRegisterElements}>Зарегистрироваться</button>
 
-            <h1>Создать Аккаунт</h1>
-            <label for="usr">Username:</label>
-            <div>
-                <input className='inpform' type="text" id="usr" />
             </div>
-            <label for="pwd">Password:</label>
-            <div>
-                <input className='inpform' type="text" id="pwd" />
-            </div>
-            <button className="btn btn-warning loginbtn" type="button" onClick={getRegisterElements}>Зарегистрироваться</button>
-
-        </div>
+        </form>
     )
 }

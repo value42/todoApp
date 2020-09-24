@@ -5,19 +5,21 @@
 }
 
 .todo, .inputForm {
-  margin-right: 2rem;
+  
   font-size: 1.5rem;
   display: flex;
-  margin: 15px 0px 15px 0rem;
+  margin-bottom: 15px;
   justify-content: center;
 }
+
 
 .loginbtn {
   margin: 5px 0px 10px 0.2rem;
 }
 
 .inpform {
-  width: 50%
+  width: 50%;
+  margin:auto;
 }
 
 .notcompleted {
@@ -25,5 +27,9 @@
 }
 
 body{
-  background-color: peachpuff;
+  background-color:#ececec;
+}
+
+form {
+  text-align:center;
 }
